@@ -84,13 +84,14 @@ const ListarTarefa = () => {
 
     return(
     <>
-    <Card>
+    <Card sx={{ borderRadius: 2, boxShadow: 3 }}>
         <CardHeader
           title="Tarefas"
           subheader="Listagem de Tarefas"
+          
         /> 
         <CardContent>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
             <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                 <TableRow>
@@ -109,7 +110,9 @@ const ListarTarefa = () => {
                 {tarefas.map((row, indice) => (
                     <TableRow
                     key={indice}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 },
+                    '&:nth-of-type(odd)': { backgroundColor: '#f7f7f7' },
+                    }}
                     >
                       <TableCell component="th" scope="row">
                           {row.idTarefa}
@@ -123,10 +126,12 @@ const ListarTarefa = () => {
                       <TableCell align="right">{row.statusTarefa}</TableCell>
                       <TableCell align="right">{row.recursoTarefa}</TableCell>
                       <TableCell align="center">
-                        <Button variant="contained" color="success" onClick={() => handleEditar(row.idTarefa)}><EditIcon fontSize="small" /></Button>            
+                        <Button variant="contained" color="success" onClick={() => handleEditar(row.idTarefa)}
+                          sx={{ borderRadius: 5 }}><EditIcon fontSize="small" /></Button>            
                       </TableCell>
                       <TableCell align="center">
-                        <Button variant="contained" color="error" onClick={() => handleDeletar(row.idTarefa)}><DeleteIcon fontSize="small" /></Button>            
+                        <Button variant="contained" color="error" onClick={() => handleDeletar(row.idTarefa)}
+                          sx={{ borderRadius: 5 }}><DeleteIcon fontSize="small" /></Button>            
                       </TableCell>
                     </TableRow>
                 ))}
@@ -165,6 +170,15 @@ const ListarTarefa = () => {
     </div>
   </>    
  );
+};
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.paper',
+  borderRadius: 2,
 };
  
 export default ListarTarefa;
